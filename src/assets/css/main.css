@@ -1,0 +1,54 @@
+html {
+  background: url(./background.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+body {
+  font-family: 'Kanit', sans-serif;
+}
+
+.page-margin {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.container-header {
+  background-color: #0E829A;
+}
+
+.header-icon {
+  position: absolute;
+  left: 16px;
+}
+
+.header-icon img {
+  width: 20px;
+  height: auto;
+}
+
+.input-container-field {
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.submit-container{
+  text-align: right;
+  margin-bottom: 0px;
+}
+
+.submit-button {
+  border: none;
+  background-color: orange;
+  padding: 10px 40px;
+  border-radius: 5px;
+}
+
+@media screen and (min-width: 30em) {
+  .page-margin {
+    padding-left: 2.75rem;
+    padding-right: 2.75rem;
+  }
+}

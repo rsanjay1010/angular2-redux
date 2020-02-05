@@ -1,0 +1,49 @@
+<div class="bg-white">
+  <header class="container-header white ph2 pv3 f4 tc relative">
+    <div class="header-icon">
+      <img class="h1 w1" src="./assets/briefcase.png" />
+    </div>
+    Recent Transacations
+  </header>
+  <div class="pa3">
+    <div class="flex flex-row-l flex-column items-center sort-options mb3">
+      <div class="mr3-l mr0 w-100 w-auto-l flex-auto mb3 mb0-l relative">
+        <input type="text" name="" value="" class="bt-0 bb br-0 bl-0 b--moon-gray w-100 pa2 pr3" placeholder="Search by typing..."
+          [(ngModel)]="searchText">
+        <span class="db absolute right-0 clear-button pointer"   [ngStyle]="{'display': searchText == ''? 'none':'block'}"
+          (click)="clearSearch()">X</span>
+      </div>
+      <div class="flex items-center w-100 w-auto-l">
+          <div class="mr3 nowrap dn db-l">Sort by</div>
+          <div class="flex-auto flex-row flex items-center f5-ns f7 w-100 w-auto-l tc">
+            <div class="ba b--moon-gray ph4-ns pv2-ns ph3 pv1 pointer relative flex-grow-1 flex-grow-0-l" (click)="sortList('transactionDate')">
+              DATE
+              <div class="arrow-up"
+                [ngStyle]="{'display': currentSortKey === 'transactionDate'? 'block':'none'}"
+                [ngClass]="{'arrow-up':currentSortOrder == 'asc', 'arrow-down': currentSortOrder == 'desc'}"
+              ></div>
+            </div>
+            <div class="ba b--moon-gray ph4-ns pv2-ns ph3 pv1 pointer relative flex-grow-1 flex-grow-0-l" (click)="sortList('merchant')">
+              BENEFICIARY
+              <div class="arrow-up"
+                [ngStyle]="{'display': currentSortKey === 'merchant'? 'block':'none'}"
+                [ngClass]="{'arrow-up':currentSortOrder == 'asc', 'arrow-down': currentSortOrder == 'desc'}"
+              ></div>
+            </div>
+            <div class="ba b--moon-gray ph4-ns pv2-ns ph3 pv1 pointer relative flex-grow-1 flex-grow-0-l" (click)="sortList('amount')">
+              AMOUNT
+              <div class="arrow-up"
+                [ngStyle]="{'display': currentSortKey === 'amount'? 'block':'none'}"
+                [ngClass]="{'arrow-up':currentSortOrder == 'asc', 'arrow-down': currentSortOrder == 'desc'}"
+              ></div>
+            </div>
+          </div>
+      </div>
+    </div>
+    <div>
+      <div *ngFor="let transaction of transactions | transactionFilter : searchText | transactionSort: currentSortKey : currentSortOrder;">
+        <transfer [data]="transaction"></transfer>
+      </div>
+    </div>
+  <div>
+<div>

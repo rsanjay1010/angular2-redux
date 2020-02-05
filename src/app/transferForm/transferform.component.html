@@ -1,0 +1,41 @@
+<div class="relative">
+  <div class="bg-white form-container">
+    <header class="container-header white pa2 f4 tc relative">
+      <div class="header-icon">
+        <img class="h1 w1" src="./assets/arrows.png" />
+      </div>
+      Make a Transfer
+    </header>
+    <form [formGroup]="transactionForm" (ngSubmit)="onSubmit()">
+      <div class="pv4 ph3 f6">
+        <div class="form-group input-container-field">
+            <label for="firstName">FROM ACCOUNT</label>
+            <input type="text" [ngModel]="fromAccount" class="bg-transparent bt-0 bb br-0 bl-0 b--moon-gray w-100 pa2 disabled" [ngModelOptions]="{standalone: true}"  disabled />
+        </div>
+        <div class="form-group input-container-field">
+            <label for="lastName">TO ACCOUNT</label>
+            <input type="text" formControlName="toAccount" class="bt-0 bb br-0 bl-0 b--moon-gray w-100 pa2" [ngClass]="{ 'b--red': submitted && transactionForm.controls.toAccount.errors }" />
+            <div *ngIf="submitted && transactionForm.controls.toAccount.errors" class="red">
+                <div *ngIf="transactionForm.controls.toAccount.errors.required">To Account is required</div>
+            </div>
+        </div>
+        <div class="form-group input-container-field relative">
+            <span class="absolute left-0 currency-sym">$</span>
+            <label for="username">AMOUNT</label>
+            <input type="number" placeholder="0.00" formControlName="amount" max="500" class="bt-0 bb br-0 bl-0 b--moon-gray w-100 pa2 pl3" [ngClass]="{ 'b--red': submitted && transactionForm.controls.amount.errors }" />
+            <div *ngIf="submitted && transactionForm.controls.amount.errors" class="red">
+                <div *ngIf="transactionForm.controls.amount.errors.required">Amount is required</div>
+                <div *ngIf="transactionForm.controls.amount.errors.maxLimitFail">More than $500 is not allowed</div>
+                <div *ngIf="transactionForm.controls.amount.errors.balanceOver">Amount exceed Balance</div>
+            </div>
+        </div>
+        <div class="form-group input-container-field submit-container">
+            <button name="Submit" class="submit-button pointer">Submit</button>
+         </div>
+
+      </div>
+    </form>
+  </div>
+  <transferPreview *ngIf="this.submitted && this.allFieldValid" [data]="curTransObj" [fromAccount]="fromAccount" (transferAmount)="transferAmount()" class="absolute top-0 left-0 bottom-0 right-0"></transferPreview>
+
+</div>

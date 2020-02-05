@@ -1,0 +1,11 @@
+<div class="flex items-center lh-copy pv2 ph3 ba b--moon-gray bl bg-white relative f5-ns f6"  >
+  <div class="absolute top-0 left-0 bottom-0 w1 bg-black tag" [ngStyle]="{'background-color': data.categoryCode}" ></div>
+    <div class="w3 w3-ns br-100 pl1 mr4-ns mr1"  >{{ data.transactionDate | date:'MMM. d' }}</div>
+    <img class="w2 h2 mr4-ns mr1" src={{data.merchantLogo}} />
+    <div class="pl3 flex-auto pr4-ns pr1 black-70 f6">
+      <span class="db">{{ data.merchant }}</span>
+      <span class="db">{{ data.transactionType }}</span>
+    </div>
+    <div class="nowrap">- {{data.amount| currency}}
+    </div>
+</div>

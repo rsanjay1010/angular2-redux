@@ -1,0 +1,26 @@
+<div class="bg-white form-container">
+  <header class="container-header white pa2 f4 tc relative">
+    <div class="header-icon">
+      <img class="h1 w1" src="./assets/arrows.png" />
+    </div>
+    Preview a Transfer
+  </header>
+  <div class="pv4 ph3 f6">
+    <div class="form-group input-container-field">
+        <div>FROM ACCOUNT</div>
+        <div class="bt-0 bb br-0 bl-0 b--moon-gray w-100 pa2"> {{fromAccount}} </div>
+    </div>
+    <div class="form-group input-container-field">
+        <div>TO ACCOUNT</div>
+        <div class="bt-0 bb br-0 bl-0 b--moon-gray w-100 pa2"> {{data.merchant}} </div>
+    </div>
+    <div class="form-group input-container-field">
+        <div>AMOUNT</div>
+        <div class="bt-0 bb br-0 bl-0 b--moon-gray w-100 pa2"> $ {{data.amount}} </div>
+    </div>
+    <div class="form-group input-container-field submit-container">
+        <button name="Transfer" class="submit-button pointer" (click)="transferAmount.emit();">Transfer</button>
+     </div>
+
+  </div>
+</div>
